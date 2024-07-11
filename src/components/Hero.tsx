@@ -3,48 +3,20 @@ import Swiper from "../../node_modules/swiper/swiper";
 import "../../node_modules/swiper/swiper-bundle.css";
 import "./hero.css";
 import HeroParts from "./HeroParts";
-import cover from "../assets/images/hero-slide-1.jpeg";
 
-const slidesData = [
-    {
-        id: 1,
-        cover: { cover },
-        name: "Grow your business",
-        rating: 4.5,
-        time: "2h 30m",
-        desc: "Call now 911-mvsoft",
-        starring: "John Doe, Jane Doe",
-        genres: "Business, Startup",
-        tags: "responsive, business",
-        video: "video1.mp4",
-    },
-    {
-        id: 2,
-        cover: "../assets/images/hero-slide-2.jpeg",
-        name: "Business startup",
-        rating: 4.7,
-        time: "2h 15m",
-        desc: "Responsive business theme",
-        starring: "Alice Smith, Bob Brown",
-        genres: "Startup, Innovation",
-        tags: "creative, business",
-        video: "video2.mp4",
-    },
-    {
-        id: 3,
-        cover: "../assets/images/hero-slide-1.jpeg",
-        name: "Our story",
-        rating: 4.8,
-        time: "1h 50m",
-        desc: "Adventures in creativity",
-        starring: "Tom Hanks, Emma Stone",
-        genres: "Adventure, Creativity",
-        tags: "adventure, creativity",
-        video: "video3.mp4",
-    },
-];
+export interface Item {
+    id: number;
+    title: string;
+    poster_path: string;
+    release_date: string;
+    inFavorites: boolean;
+}
 
-const Hero: React.FC = () => {
+type UpcommingProps = {
+    items: Item[];
+};
+
+const Hero: React.FC<UpcommingProps> = ({ items }) => {
     useEffect(() => {
         new Swiper(".section-hero__swiper", {
             speed: 600,
@@ -124,8 +96,8 @@ const Hero: React.FC = () => {
             <section className="section section-hero section-hero--slider">
                 <div className="section-hero__swiper swiper section-hero__wrapper">
                     <div className="swiper-wrapper hero-parallax">
-                        {slidesData.map((slide) => (
-                            <HeroParts key={slide.id} item={slide} />
+                        {items.map((item) => (
+                            <HeroParts key={item.id} item={item} />
                         ))}
                     </div>
                     {/* <div className="swiper-pagination"></div>

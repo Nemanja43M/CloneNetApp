@@ -1,3 +1,4 @@
+import React from "react";
 import { Item } from "./Upcoming";
 import heroSlide1 from "../../assets/images/hero-slide-1.jpeg";
 
@@ -5,20 +6,19 @@ type UcardProps = {
     item: Item;
 };
 
-const Ucard: React.FC<UcardProps> = ({ item: { id, cover, name, time } }) => {
+const Ucard: React.FC<UcardProps> = ({ item: { title, poster_path, release_date, inFavorites } }) => {
     return (
         <div className="MovieBox">
             <div className="img">
-                <img src={heroSlide1} alt="" />
+                <img src={heroSlide1} alt={title} />
             </div>
             <div className="text">
-                <h3>{name}</h3>
-                <span>{time}</span> <br />
-                {/* <Link to={`/singlepage/${id}`}> */}
+                <h3>{title}</h3>
+                <span>{release_date}</span> <br />
+                {/* <span>{inFavorites ? "In Favorites" : "Not in Favorites"}</span> */}
                 <button className="primary-btn">
-                    <i className="fa fa-play"></i> PLAY NOW
+                    <i className="fa fa-play"></i> Play Now
                 </button>
-                {/* </Link> */}
             </div>
         </div>
     );

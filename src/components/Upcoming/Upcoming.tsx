@@ -32,9 +32,10 @@ const SamplePrevArrow: React.FC<SampleArrowProps> = ({ onClick }) => {
 
 export interface Item {
     id: number;
-    cover: string;
-    name: string;
-    time: string;
+    title: string;
+    poster_path: string;
+    release_date: string;
+    inFavorites: boolean;
 }
 
 type UpcommingProps = {
