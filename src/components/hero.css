@@ -31,10 +31,12 @@
     justify-content: center;
     align-items: center;
     color: #fff;
+    left: 25%;
+    top: 15%;
 }
 .section-hero .container-fluid .section-hero__content .section-hero__content-title {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-direction: column;
     justify-content: center;
 }
 .section-hero .container-fluid .section-hero__content .section-hero__content-title h1 {

@@ -40,7 +40,7 @@ const Header: React.FC = () => {
                         <i className="fa fa-search"></i>
                         <i className="fas fa-bell"></i>
                         <i className="fas fa-user"></i>
-                        <button>Subscribe Now</button>
+                        <button className="live">Subscribe Now</button>
                     </div>
                 </div>
             </header>

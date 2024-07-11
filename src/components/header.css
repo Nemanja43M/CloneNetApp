@@ -91,3 +91,15 @@ header button {
         background: none;
     }
 }
+.live {
+    animation: blink 1s infinite alternate;
+    /* background-color: #ff41d6; */
+}
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
