@@ -264,7 +264,14 @@
 .section-hero.section-hero--slider .section-hero__swiper .swiper-slide .swiper-slide-content h4 {
     margin-bottom: 35px;
 }
+
 @media (max-width: 576px) {
+    .logo img {
+        display: none;
+    }
+    .section-hero .container-fluid .section-hero__content .section-hero__content-title h1 {
+        font-size: 45px;
+    }
     .section-hero.section-hero--slider .section-hero__swiper .swiper-slide .swiper-slide-content h4 {
         margin-bottom: 15px;
     }

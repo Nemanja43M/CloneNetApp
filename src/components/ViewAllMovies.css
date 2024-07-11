@@ -1,0 +1,45 @@
+/*--------------------------------------------------------------
+# Section News
+--------------------------------------------------------------*/
+.section-news div[class*="col-"] {
+    margin-bottom: 60px;
+}
+.section-news div[class*="col-"] > a:not(a.btn) {
+    display: block;
+}
+.section-news h4 {
+    margin: 0 0 35px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.7;
+    font-weight: 700;
+}
+.section-news h5 {
+    padding-top: 10px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.7;
+    font-weight: 700;
+}
+.section-news img {
+    margin-bottom: 20px;
+}
+.section-news a.btn {
+    padding: 4px 10px;
+    border: 2px solid #ddd;
+    border-radius: 0;
+    background-color: #ddd;
+    color: #000;
+    font-size: 10px;
+    letter-spacing: 2px;
+    outline: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.section-news a.btn:hover {
+    opacity: 0.65;
+}

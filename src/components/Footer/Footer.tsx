@@ -20,7 +20,7 @@ const Footer = () => {
                     </div>
                     <div className="box">
                         <h3>Follow Us</h3>
-                        <i className="fab fa-facebook-f"></i>
+
                         <i className="fab fa-twitter"></i>
                         <i className="fab fa-github"></i>
                         <i className="fab fa-instagram"></i>
@@ -29,9 +29,8 @@ const Footer = () => {
                         <h3>United Cloud App</h3>
                         <div className="img">
                             <img src="https://img.icons8.com/color/48/000000/apple-app-store--v3.png" alt="" />
-                            <span>App Store</span>
+
                             <img src="https://img.icons8.com/fluency/48/000000/google-play.png" alt="" />
-                            <span>Google Play Store</span>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Ucard from "./Ucard";
 import Slider from "react-slick";
 
@@ -68,7 +68,7 @@ const Upcomming: React.FC<UpcommingProps> = ({ items, title }) => {
             <div className="container">
                 <div className="heading flexSB">
                     <h1>{title}</h1>
-                    <Link to="/">View All</Link>
+                    {/* <Link to="/">View All</Link> */}
                 </div>
                 <div className="content">
                     <Slider {...settings}>

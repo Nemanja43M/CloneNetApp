@@ -29,6 +29,9 @@ footer i {
 }
 footer .img {
     margin-top: 40px;
+    margin-right: 51px;
+    display: flex;
+    justify-content: space-around;
 }
 footer span {
     font-size: 12px;
@@ -45,5 +48,11 @@ footer h3 {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 30px;
+    }
+    footer .img {
+        margin-top: 40px;
+        margin-right: 1px;
+        display: flex;
+        justify-content: space-around;
     }
 }
