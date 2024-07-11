@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
                             <li>Blog</li>
                         </ul>
                         <p>
-                            © 2022 United Cloud. All Rights Reserved. All videos and shows on this platform are
+                            © 2024 United Cloud. All Rights Reserved. All videos and shows on this platform are
                             trademarks of, and all related images and content are the property of, United Cloud Inc.
                             Duplication and copy of this is strictly prohibited. All rights reserved.
                         </p>

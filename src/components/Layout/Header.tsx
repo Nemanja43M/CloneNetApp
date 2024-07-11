@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./header.css";
 import img from "../../assets/images/united_cloud_logo_1_.svg";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
     const [Mobile, setMobile] = useState<boolean>(false);
@@ -14,16 +15,13 @@ const Header: React.FC = () => {
                         </div>
                         <ul className={Mobile ? "navMenu-list" : "flexSB"} onClick={() => setMobile(false)}>
                             <li>
-                                <a href="/">Home</a>
+                                <Link to="/">Home</Link>
                             </li>
                             <li>
-                                <a href="/">Series</a>
+                                <Link to="/series">Series</Link>
                             </li>
                             <li>
-                                <a href="/">Movies</a>
-                            </li>
-                            <li>
-                                <a href="/">MyFavorites</a>
+                                <Link to="/movies">Movies</Link>
                             </li>
                         </ul>
                         <button className="toggle" onClick={() => setMobile(!Mobile)}>

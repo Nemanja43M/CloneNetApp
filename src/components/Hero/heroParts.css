@@ -135,6 +135,7 @@
 .hero-btn {
     animation: easy-in 1s infinite alternate;
 }
+
 @keyframes blink {
     0% {
         opacity: 0;
@@ -148,6 +149,12 @@
     display: flex;
 }
 @media only screen and (max-width: 768px) {
+    .overview {
+        display: none;
+    }
+    .rating span {
+        height: 80%;
+    }
     .palyButton img {
         margin-right: 0;
     }

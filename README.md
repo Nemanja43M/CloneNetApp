@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# United Cloud Task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Overview
 
-## Available Scripts
+The application is built using React with TypeScript, combining the React's component-based architecture with TypeScript's static typing capabilities.
 
-In the project directory, you can run:
+# Getting Started
 
-### `npm start`
+To run the project locally, follow these steps:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Install Dependencies:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+npm install
 
-### `npm test`
+# Run Development Server:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm run dev
 
-### `npm run build`
+# Open in Browser:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Navigate to http://localhost:3000 to view the application.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Tasks Implementation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# 1 Filter duplicated movies from the response
 
-### `npm run eject`
+Mapping Data: Initially, movieData is mapped to an array of Item type objects (data), where each object represents a movie with properties such as id, title, poster_path, release_date, inFavorites, ratings, and overview.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Using Set: The Set data structure is employed to collect unique id values from the data array. This ensures that only unique movies are retained based on their id.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Filtering and Mapping: After obtaining unique id values using Set, the array is mapped to filter and retrieve the corresponding Item objects (uniqueData). This ensures that each movie appears only once in the final list.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# 2 Sort movies by imdb rating
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Sorting: The sortedData array is created as a copy of uniqueData, sorted in descending order based on the IMDb rating (ratingB - ratingA). This ensures that movies with higher IMDb ratings appear first in the sorted list.
 
-## Learn More
+Rating Extraction: Each movie's IMDb rating (rating.id === "imdb") is extracted using Array.prototype.find. If a movie lacks an IMDb rating, it defaults to 0 to ensure consistent sorting.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# 3 Render all filtered & sorted movies in grid view
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 4 Each rendered movie item should display title, poster, release date and inFavorites
+
+The filteredSortedMovies array state is mapped over to render each movie in a grid view (movie-grid). Each movie is displayed in a movie-card container, showing essential details such as the poster image, title, release date, and whether it is marked as a favorite (inFavorites).
+
+# 5 Highlight selected item
+
+# 6 On Enter Key Add Item to Favorites / Remove if Already in Favorites
+
+State Management: Redux was used to manage the application state, including the favorites list (favorites). This state keeps track of which movies are marked as favorites.
+
+Handling Function: handleFavorites function that is invoked when the user presses Enter on a specific movie in the HeroParts component.
+
+Redux Dispatch: Within the handleFavorites function, you utilized Redux's dispatch function to call the setFavorites action, which adds or removes the movie from favorites based on its current state.
+
+Visual Feedback: In the movie's visual representation, user conditional rendering of heart icons (bi bi-heart and bi bi-heart-fill) that change on click or when the Enter key is pressed, providing users with clear feedback on whether the movie has been added or removed from favorites.
+
+CSS Classes: CSS classes were added to visually distinguish which movies are added to favorites, enabling users to easily identify which movies are marked as favorites.
+
+These implementations enable users to interactively manage their favorite movies using the keyboard, enhancing overall user experience and accessibility of the application.

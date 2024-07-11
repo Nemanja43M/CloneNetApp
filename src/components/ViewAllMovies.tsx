@@ -1,17 +1,15 @@
 import React from "react";
 
-import Header from "./Layout/Header";
 import Upcomming from "./Upcoming/Upcoming";
-import Footer from "./Layout/Footer";
 import { ViewAllMoviesProps } from "../interfaces/interfaces";
 
 const ViewAllMovies: React.FC<ViewAllMoviesProps> = ({ items, title }) => {
+    const list = items.slice(0, 6);
+    const list2 = items.slice(6, 12);
     return (
         <>
-            <Header />
-            <Upcomming items={items} title={title} />
-            <Upcomming items={items} title="" />
-            <Footer />
+            <Upcomming items={list} title={title} />
+            <Upcomming items={list2} title="" />
         </>
     );
 };

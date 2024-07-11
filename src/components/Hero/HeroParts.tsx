@@ -29,8 +29,14 @@ const HeroParts: React.FC<HeroPartsProps> = ({ item, onSelectFavorite }) => {
         onSelectFavorite(item);
     };
 
+    const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        if (event.key === "Enter") {
+            handleSelectFavorite(item);
+        }
+    };
+
     return (
-        <div className="swiper-slide">
+        <div className="swiper-slide" tabIndex={0} onKeyDown={handleKeyPress}>
             <div
                 className="container-fluid swiper-slide-content"
                 style={{
@@ -52,11 +58,14 @@ const HeroParts: React.FC<HeroPartsProps> = ({ item, onSelectFavorite }) => {
                                 <i className="fa fa-star"></i>
                                 <i className="fa fa-star-half"></i>
                             </div>
-                            <label>2.5(Imdb)</label>
+                            <label>
+                                {item.ratings[0].rating} {item.ratings[0].id}
+                            </label>
                             <span>Add me to MyFavorites</span>
                             <span onClick={() => handleSelectFavorite(item)}>
                                 {isFavorite ? <i className="bi bi-heart-fill"></i> : <i className="bi bi-heart"></i>}
                             </span>
+                            <span>Click on heart</span>
                         </div>
 
                         <div className="cast">
@@ -74,7 +83,7 @@ const HeroParts: React.FC<HeroPartsProps> = ({ item, onSelectFavorite }) => {
                                     <span>Release Date </span>
                                     {item.release_date}
                                 </h4>
-                                <h4>
+                                <h4 className="overview">
                                     <span>Overview </span>
                                     {item.overview}
                                 </h4>

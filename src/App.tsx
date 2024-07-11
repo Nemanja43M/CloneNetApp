@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { setFavorites } from "./slices/Favorites";
 import { useDispatch } from "react-redux";
 
@@ -10,12 +10,12 @@ import Upcomming from "./components/Upcoming/Upcoming";
 import movieData from "./assets/movie.json";
 import Footer from "./components/Layout/Footer";
 import { Item } from "./interfaces/interfaces";
+import ViewAllMovies from "./components/ViewAllMovies";
 
 const App: React.FC = () => {
     const [items, setItems] = useState<Item[]>([]);
     const [items2, setItems2] = useState<Item[]>([]);
     const [sortedByImdb, setSortedByImdb] = useState<Item[]>([]);
-    // const [favoriteItems, setFavoriteItems] = useState<Item[]>([]);
 
     const dispatch = useDispatch();
     const handleFavorites = (item: Item) => {
@@ -53,19 +53,27 @@ const App: React.FC = () => {
 
         const top9Movies = sortedData.slice(0, 9);
         setSortedByImdb(top9Movies);
-        // const favoritesFromStorage = JSON.parse(sessionStorage.getItem("favorites") || "[]");
-
-        // const favoriteMovies = uniqueData.filter((movie) => favoritesFromStorage.includes(movie.id));
-        // setFavoriteItems(favoriteMovies);
     }, []);
 
     return (
         <Router>
             <Header />
-            <Hero items={items} onSelectFavorite={handleFavorites} />
-            <Upcomming items={sortedByImdb} title="Most popular in IMBD" />
-            <Upcomming items={items} title="My Favorites" />
-            <Hero items={items2} onSelectFavorite={handleFavorites} />
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <>
+                            <Hero items={items} onSelectFavorite={handleFavorites} />
+                            <Upcomming items={sortedByImdb} title="Most popular in IMBD" />
+                            <Upcomming items={items} title="My Favorites" />
+                            <Hero items={items2} onSelectFavorite={handleFavorites} />
+                        </>
+                    }
+                />
+                <Route path="/series" element={<ViewAllMovies items={items} title="Series" />} />
+                <Route path="/movies" element={<ViewAllMovies items={items2} title="Movies" />} />
+                <Route path="*" element={<h1>404 - Not Found</h1>} />
+            </Routes>
             <Footer />
         </Router>
     );
