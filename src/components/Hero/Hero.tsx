@@ -1,22 +1,11 @@
 import React, { useEffect } from "react";
-import Swiper from "../../node_modules/swiper/swiper";
-import "../../node_modules/swiper/swiper-bundle.css";
+import Swiper from "../../../node_modules/swiper/swiper";
+import "../../../node_modules/swiper/swiper-bundle.css";
 import "./hero.css";
-import HeroParts from "./HeroParts";
+import HeroParts from "../Hero/HeroParts";
+import { HeroProps } from "../../interfaces/interfaces";
 
-export interface Item {
-    id: number;
-    title: string;
-    poster_path: string;
-    release_date: string;
-    inFavorites: boolean;
-}
-
-type UpcommingProps = {
-    items: Item[];
-};
-
-const Hero: React.FC<UpcommingProps> = ({ items }) => {
+const Hero: React.FC<HeroProps> = ({ items, onSelectFavorite }) => {
     useEffect(() => {
         new Swiper(".section-hero__swiper", {
             speed: 600,
@@ -41,9 +30,7 @@ const Hero: React.FC<UpcommingProps> = ({ items }) => {
         const scrollBtn = document.querySelector(".section-hero__wrapper .scroll-btn") as HTMLElement | null;
         const aboutSwiper = document.querySelector(".section-about__swiper") as HTMLElement | null;
 
-        const buildModuleHeader = (sectionHero: HTMLElement) => {
-            // Implement any specific logic for building the module header if needed
-        };
+        const buildModuleHeader = (sectionHero: HTMLElement) => {};
 
         const effectsModuleHeader = (sectionHero: HTMLElement | null, scrollTopp: HTMLElement) => {
             if (sectionHero) {
@@ -97,14 +84,9 @@ const Hero: React.FC<UpcommingProps> = ({ items }) => {
                 <div className="section-hero__swiper swiper section-hero__wrapper">
                     <div className="swiper-wrapper hero-parallax">
                         {items.map((item) => (
-                            <HeroParts key={item.id} item={item} />
+                            <HeroParts key={item.id} item={item} onSelectFavorite={onSelectFavorite} />
                         ))}
                     </div>
-                    {/* <div className="swiper-pagination"></div>
-                    <div className="swiper-navigation d-none d-lg-block">
-                        <div className="swiper-button swiper-button-prev"></div>
-                        <div className="swiper-button swiper-button-next"></div>
-                    </div> */}
                 </div>
             </section>
         </>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./header.css";
-import img from "../assets/images/united_cloud_logo_1_.svg";
+import img from "../../assets/images/united_cloud_logo_1_.svg";
 
 const Header: React.FC = () => {
     const [Mobile, setMobile] = useState<boolean>(false);
@@ -23,13 +23,7 @@ const Header: React.FC = () => {
                                 <a href="/">Movies</a>
                             </li>
                             <li>
-                                <a href="/">Pages</a>
-                            </li>
-                            <li>
-                                <a href="/">Pricing</a>
-                            </li>
-                            <li>
-                                <a href="/">Contact</a>
+                                <a href="/">MyFavorites</a>
                             </li>
                         </ul>
                         <button className="toggle" onClick={() => setMobile(!Mobile)}>

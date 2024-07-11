@@ -5,6 +5,7 @@ import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { UpcommingProps } from "../../interfaces/interfaces";
 
 type SampleArrowProps = {
     onClick: () => void;
@@ -30,19 +31,6 @@ const SamplePrevArrow: React.FC<SampleArrowProps> = ({ onClick }) => {
     );
 };
 
-export interface Item {
-    id: number;
-    title: string;
-    poster_path: string;
-    release_date: string;
-    inFavorites: boolean;
-}
-
-type UpcommingProps = {
-    items: Item[];
-    title: string;
-};
-
 const Upcomming: React.FC<UpcommingProps> = ({ items, title }) => {
     const settings = {
         dots: false,
@@ -50,6 +38,7 @@ const Upcomming: React.FC<UpcommingProps> = ({ items, title }) => {
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
+        accessibility: true,
         nextArrow: <SampleNextArrow onClick={() => {}} />,
         prevArrow: <SamplePrevArrow onClick={() => {}} />,
         responsive: [
