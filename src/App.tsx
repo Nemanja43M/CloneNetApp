@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Upcomming from "./components/Upcoming/Upcoming";
 import movieData from "./assets/movie.json";
+import Footer from "./components/Footer/Footer";
 
 interface Item {
     id: number;
@@ -41,6 +42,7 @@ const App: React.FC = () => {
             <Upcomming items={items} title="Favorites Movies" />
             <Upcomming items={items} title="Upcoming Movies" />
             <Hero items={items} />
+            <Footer />
         </Router>
     );
 };

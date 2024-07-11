@@ -1,6 +1,5 @@
 import React from "react";
 import { Item } from "./Upcoming";
-import heroSlide1 from "../../assets/images/hero-slide-1.jpeg";
 
 type UcardProps = {
     item: Item;
@@ -10,7 +9,7 @@ const Ucard: React.FC<UcardProps> = ({ item: { title, poster_path, release_date,
     return (
         <div className="MovieBox">
             <div className="img">
-                <img src={heroSlide1} alt={title} />
+                {poster_path && <img src={`${process.env.REACT_APP_BASE_IMG_URL}${poster_path}`} alt={title} />}
             </div>
             <div className="text">
                 <h3>{title}</h3>

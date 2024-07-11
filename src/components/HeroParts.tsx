@@ -11,9 +11,15 @@ interface HeroPartsProps {
 }
 
 const HeroParts: React.FC<HeroPartsProps> = ({ item: { title, poster_path, release_date, inFavorites } }) => {
+    console.log(poster_path);
     return (
         <div className="swiper-slide">
-            <div className="container-fluid swiper-slide-content" style={{ backgroundImage: `url(${cover})` }}>
+            <div
+                className="container-fluid swiper-slide-content"
+                // style={{
+                //     backgroundImage: poster_path ? `url{${process.env.REACT_APP_BASE_IMG_URL}${poster_path}}` : cover,
+                // }}
+            >
                 <div className="row section-hero__content">
                     <div className="col-12 section-hero__content-title">
                         <div className="headline">
