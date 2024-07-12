@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { setFavorites } from './slices/Favorites';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Header from './components/Layout/Header';
 import Hero from './components/Hero/Hero';
@@ -11,12 +11,18 @@ import movieData from './assets/movie.json';
 import Footer from './components/Layout/Footer';
 import { Item } from './interfaces/interfaces';
 import ViewAllMovies from './components/ViewAllMovies';
-
+export interface RootFavorites {
+    favorites: { list: Item[] };
+}
 const App: React.FC = () => {
     const [items, setItems] = useState<Item[]>([]);
     const [items2, setItems2] = useState<Item[]>([]);
     const [sortedByImdb, setSortedByImdb] = useState<Item[]>([]);
 
+    const favorites = useSelector(
+        (state: RootFavorites) => state.favorites.list
+    );
+    console.log(favorites);
     const dispatch = useDispatch();
     const handleFavorites = (item: Item) => {
         try {
@@ -73,9 +79,9 @@ const App: React.FC = () => {
                             />
                             <Upcomming
                                 items={sortedByImdb}
-                                title="Most popular in IMBD"
+                                title="Most popular in IMDb"
                             />
-                            <Upcomming items={items} title="My Favorites" />
+                            <Upcomming items={items2} title="Upcoming Movies" />
                             <Hero
                                 items={items2}
                                 onSelectFavorite={handleFavorites}

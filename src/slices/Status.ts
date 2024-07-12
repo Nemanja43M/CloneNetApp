@@ -1,12 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { ActionStatus, Status } from "../interfaces/interfaces";
+import { createSlice } from '@reduxjs/toolkit';
+import { ActionStatus, Status } from '../interfaces/interfaces';
 
 const initialState: Status = {
-    isLoading: true,
+    isLoading: false,
 };
 
-export const favoritesSlice = createSlice({
-    name: "favorites",
+export const statusSlice = createSlice({
+    name: 'status',
     initialState: initialState,
     reducers: {
         setLoading: (state, action: ActionStatus) => {
@@ -15,6 +15,6 @@ export const favoritesSlice = createSlice({
     },
 });
 
-export const { setLoading } = favoritesSlice.actions;
+export const { setLoading } = statusSlice.actions;
 
-export default favoritesSlice.reducer;
+export default statusSlice.reducer;
