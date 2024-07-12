@@ -1,42 +1,86 @@
-import React, { useEffect, useState } from "react";
-import "./heroParts.css";
-import cover from "../../assets/images/hero-slide-1.jpeg";
-import play from "../../assets/images/play.png";
-import playBtn from "../../assets/images/play-button.png";
-import { HeroPartsProps, Item } from "../../interfaces/interfaces";
+import React, { useEffect, useState, useRef } from 'react';
+import './heroParts.css';
+import cover from '../../assets/images/hero-slide-1.jpeg';
+import play from '../../assets/images/play.png';
+import playBtn from '../../assets/images/play-button.png';
+import { HeroPartsProps, Item } from '../../interfaces/interfaces';
 
 const HeroParts: React.FC<HeroPartsProps> = ({ item, onSelectFavorite }) => {
     const [isFavorite, setIsFavorite] = useState(item.inFavorites);
+    const [isInView, setIsInView] = useState(false);
+    const itemRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const favorites = JSON.parse(sessionStorage.getItem("favorites") || "[]");
+        const favorites = JSON.parse(
+            sessionStorage.getItem('favorites') || '[]'
+        );
         const isItemFavorite = favorites.includes(item.id);
         setIsFavorite(isItemFavorite);
     }, [item.id]);
 
     const handleSelectFavorite = (item: Item) => {
-        const favorites = JSON.parse(sessionStorage.getItem("favorites") || "[]");
+        const favorites = JSON.parse(
+            sessionStorage.getItem('favorites') || '[]'
+        );
 
         if (favorites.includes(item.id)) {
-            sessionStorage.setItem("favorites", JSON.stringify(favorites.filter((id: number) => id !== item.id)));
+            sessionStorage.setItem(
+                'favorites',
+                JSON.stringify(favorites.filter((id: number) => id !== item.id))
+            );
             setIsFavorite(false);
         } else {
             favorites.push(item.id);
-            sessionStorage.setItem("favorites", JSON.stringify(favorites));
+            sessionStorage.setItem('favorites', JSON.stringify(favorites));
             setIsFavorite(true);
         }
 
         onSelectFavorite(item);
     };
 
-    const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
-        if (event.key === "Enter") {
-            handleSelectFavorite(item);
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setIsInView(true);
+                    } else {
+                        setIsInView(false);
+                    }
+                });
+            },
+            { threshold: 0.5 }
+        );
+
+        if (itemRef.current) {
+            observer.observe(itemRef.current);
         }
-    };
+
+        return () => {
+            if (itemRef.current) {
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+                observer.unobserve(itemRef.current);
+            }
+        };
+    }, [itemRef]);
+
+    useEffect(() => {
+        const detectKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Enter' && isInView) {
+                handleSelectFavorite(item);
+            }
+        };
+
+        document.addEventListener('keydown', detectKeyDown, true);
+
+        return () => {
+            document.removeEventListener('keydown', detectKeyDown, true);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isInView, item]);
 
     return (
-        <div className="swiper-slide" tabIndex={0} onKeyDown={handleKeyPress}>
+        <div className="swiper-slide" tabIndex={0} ref={itemRef}>
             <div
                 className="container-fluid swiper-slide-content"
                 style={{
@@ -63,7 +107,11 @@ const HeroParts: React.FC<HeroPartsProps> = ({ item, onSelectFavorite }) => {
                             </label>
                             <span>Add me to MyFavorites</span>
                             <span onClick={() => handleSelectFavorite(item)}>
-                                {isFavorite ? <i className="bi bi-heart-fill"></i> : <i className="bi bi-heart"></i>}
+                                {isFavorite ? (
+                                    <i className="bi bi-heart-fill"></i>
+                                ) : (
+                                    <i className="bi bi-heart"></i>
+                                )}
                             </span>
                             <span>Click on heart</span>
                         </div>
@@ -73,7 +121,11 @@ const HeroParts: React.FC<HeroPartsProps> = ({ item, onSelectFavorite }) => {
                                 <button>
                                     <div className="img">
                                         <img src={playBtn} alt="" />
-                                        <img src={play} className="change" alt="" />
+                                        <img
+                                            src={play}
+                                            className="change"
+                                            alt=""
+                                        />
                                     </div>
                                     WATCH TRAILER
                                 </button>

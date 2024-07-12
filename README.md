@@ -44,8 +44,6 @@ The filteredSortedMovies array state is mapped over to render each movie in a gr
 
 # 5 Highlight selected item
 
-# 6 On Enter Key Add Item to Favorites / Remove if Already in Favorites
-
 State Management: Redux was used to manage the application state, including the favorites list (favorites). This state keeps track of which movies are marked as favorites.
 
 Handling Function: handleFavorites function that is invoked when the user presses Enter on a specific movie in the HeroParts component.
@@ -57,3 +55,12 @@ Visual Feedback: In the movie's visual representation, user conditional renderin
 CSS Classes: CSS classes were added to visually distinguish which movies are added to favorites, enabling users to easily identify which movies are marked as favorites.
 
 These implementations enable users to interactively manage their favorite movies using the keyboard, enhancing overall user experience and accessibility of the application.
+
+# # 6 On Enter Key Add Item to Favorites / Remove if Already in Favorites
+
+-   **TAB Key:** Allows users to move focus from one interactive element to another, such as links, form fields, menus, and media player controls.
+-   **Arrow Keys:** Used for navigating through options within applications.
+-   **ENTER Key:** Activates selected elements, like icons in favorites.
+-   **Space Bar:** Typically used for scrolling or activating elements, such as checkboxes and radio buttons.
+
+Implementing keyboard navigation enhances accessibility by providing alternative navigation methods for users who may not use a mouse or touch screen.

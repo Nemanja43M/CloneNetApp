@@ -1,5 +1,5 @@
-import React from "react";
-import "./footer.css";
+import React from 'react';
+import './footer.css';
 
 const Footer: React.FC = () => {
     return (
@@ -13,9 +13,11 @@ const Footer: React.FC = () => {
                             <li>Blog</li>
                         </ul>
                         <p>
-                            © 2024 United Cloud. All Rights Reserved. All videos and shows on this platform are
-                            trademarks of, and all related images and content are the property of, United Cloud Inc.
-                            Duplication and copy of this is strictly prohibited. All rights reserved.
+                            © 2024 United Cloud. All Rights Reserved. All videos
+                            and shows on this platform are trademarks of, and
+                            all related images and content are the property of,
+                            United Cloud Inc. Duplication and copy of this is
+                            strictly prohibited. All rights reserved.
                         </p>
                     </div>
                     <div className="box">
@@ -28,9 +30,15 @@ const Footer: React.FC = () => {
                     <div className="box">
                         <h3>United Cloud App</h3>
                         <div className="img">
-                            <img src="https://img.icons8.com/color/48/000000/apple-app-store--v3.png" alt="" />
+                            <img
+                                src="https://img.icons8.com/color/48/000000/apple-app-store--v3.png"
+                                alt=""
+                            />
 
-                            <img src="https://img.icons8.com/fluency/48/000000/google-play.png" alt="" />
+                            <img
+                                src="https://img.icons8.com/fluency/48/000000/google-play.png"
+                                alt=""
+                            />
                         </div>
                     </div>
                 </div>

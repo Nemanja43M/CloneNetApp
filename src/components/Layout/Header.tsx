@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import "./header.css";
-import img from "../../assets/images/united_cloud_logo_1_.svg";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import './header.css';
+import img from '../../assets/images/united_cloud_logo_1_.svg';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
     const [Mobile, setMobile] = useState<boolean>(false);
@@ -13,7 +13,10 @@ const Header: React.FC = () => {
                         <div className="logo">
                             <img className="logo-img" src={img} alt="" />
                         </div>
-                        <ul className={Mobile ? "navMenu-list" : "flexSB"} onClick={() => setMobile(false)}>
+                        <ul
+                            className={Mobile ? 'navMenu-list' : 'flexSB'}
+                            onClick={() => setMobile(false)}
+                        >
                             <li>
                                 <Link to="/">Home</Link>
                             </li>
@@ -24,8 +27,15 @@ const Header: React.FC = () => {
                                 <Link to="/movies">Movies</Link>
                             </li>
                         </ul>
-                        <button className="toggle" onClick={() => setMobile(!Mobile)}>
-                            {Mobile ? <i className="fa fa-times"></i> : <i className="fa fa-bars"></i>}
+                        <button
+                            className="toggle"
+                            onClick={() => setMobile(!Mobile)}
+                        >
+                            {Mobile ? (
+                                <i className="fa fa-times"></i>
+                            ) : (
+                                <i className="fa fa-bars"></i>
+                            )}
                         </button>
                     </nav>
                     <div className="account flexSB">

@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { setFavorites } from "./slices/Favorites";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { setFavorites } from './slices/Favorites';
+import { useDispatch } from 'react-redux';
 
-import Header from "./components/Layout/Header";
-import Hero from "./components/Hero/Hero";
-import Upcomming from "./components/Upcoming/Upcoming";
-import movieData from "./assets/movie.json";
-import Footer from "./components/Layout/Footer";
-import { Item } from "./interfaces/interfaces";
-import ViewAllMovies from "./components/ViewAllMovies";
+import Header from './components/Layout/Header';
+import Hero from './components/Hero/Hero';
+import Upcomming from './components/Upcoming/Upcoming';
+import movieData from './assets/movie.json';
+import Footer from './components/Layout/Footer';
+import { Item } from './interfaces/interfaces';
+import ViewAllMovies from './components/ViewAllMovies';
 
 const App: React.FC = () => {
     const [items, setItems] = useState<Item[]>([]);
@@ -37,7 +37,9 @@ const App: React.FC = () => {
             overview: movie.overview,
         }));
 
-        const uniqueData: Item[] = Array.from(new Set(data.map((movie) => movie.id)))
+        const uniqueData: Item[] = Array.from(
+            new Set(data.map((movie) => movie.id))
+        )
             .map((id) => data.find((movie) => movie.id === id))
             .filter((movie): movie is Item => movie !== undefined);
 
@@ -46,12 +48,14 @@ const App: React.FC = () => {
         const movies2 = uniqueData.slice(10, 20);
         setItems2(movies2);
         const sortedData = [...uniqueData].sort((a, b) => {
-            const ratingA = a.ratings.find((rating) => rating.id === "imdb")?.rating ?? 0;
-            const ratingB = b.ratings.find((rating) => rating.id === "imdb")?.rating ?? 0;
+            const ratingA =
+                a.ratings.find((rating) => rating.id === 'imdb')?.rating ?? 0;
+            const ratingB =
+                b.ratings.find((rating) => rating.id === 'imdb')?.rating ?? 0;
             return ratingB - ratingA;
         });
 
-        const top9Movies = sortedData.slice(0, 9);
+        const top9Movies = sortedData.slice(1, 9);
         setSortedByImdb(top9Movies);
     }, []);
 
@@ -63,15 +67,30 @@ const App: React.FC = () => {
                     path="/"
                     element={
                         <>
-                            <Hero items={items} onSelectFavorite={handleFavorites} />
-                            <Upcomming items={sortedByImdb} title="Most popular in IMBD" />
+                            <Hero
+                                items={items}
+                                onSelectFavorite={handleFavorites}
+                            />
+                            <Upcomming
+                                items={sortedByImdb}
+                                title="Most popular in IMBD"
+                            />
                             <Upcomming items={items} title="My Favorites" />
-                            <Hero items={items2} onSelectFavorite={handleFavorites} />
+                            <Hero
+                                items={items2}
+                                onSelectFavorite={handleFavorites}
+                            />
                         </>
                     }
                 />
-                <Route path="/series" element={<ViewAllMovies items={items} title="Series" />} />
-                <Route path="/movies" element={<ViewAllMovies items={items2} title="Movies" />} />
+                <Route
+                    path="/series"
+                    element={<ViewAllMovies items={items} title="Series" />}
+                />
+                <Route
+                    path="/movies"
+                    element={<ViewAllMovies items={items2} title="Movies" />}
+                />
                 <Route path="*" element={<h1>404 - Not Found</h1>} />
             </Routes>
             <Footer />

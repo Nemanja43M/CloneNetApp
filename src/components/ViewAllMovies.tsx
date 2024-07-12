@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import Upcomming from "./Upcoming/Upcoming";
-import { ViewAllMoviesProps } from "../interfaces/interfaces";
+import Upcomming from './Upcoming/Upcoming';
+import { ViewAllMoviesProps } from '../interfaces/interfaces';
 
 const ViewAllMovies: React.FC<ViewAllMoviesProps> = ({ items, title }) => {
     const list = items.slice(0, 6);

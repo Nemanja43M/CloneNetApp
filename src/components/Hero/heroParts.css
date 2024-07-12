@@ -33,7 +33,7 @@
     font-size: 60px;
     text-transform: uppercase;
     font-weight: 800;
-    background-image: url("../../assets/images/hero-slide-2.jpeg");
+    background-image: url('../../assets/images/hero-slide-2.jpeg');
     background-repeat: repeat;
     background-clip: text;
     -webkit-background-clip: text;
@@ -41,7 +41,7 @@
     -webkit-font-smoothing: antialiased;
 }
 .coverImage::after {
-    content: "";
+    content: '';
     position: fixed;
     top: 0;
     left: 0;
@@ -149,6 +149,9 @@
     display: flex;
 }
 @media only screen and (max-width: 768px) {
+    .rating span {
+        background-color: transparent;
+    }
     .overview {
         display: none;
     }
